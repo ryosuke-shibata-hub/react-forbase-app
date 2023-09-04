@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./reactApp:/usr/src/app # ローカルをコンテナ内にマウント
+    command: sh -c "cd app && yarn start"
+    ports:
+      - "3000:3000"
+    stdin_open: true
+# docker-compose run --rm react-app sh -c "npm install -g create-react-app && create-react-app app (--template typescript)"
+# ↑初回構築時に上記コマンド実行
